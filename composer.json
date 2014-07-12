@@ -4,6 +4,7 @@
     "description" : "Public Form Extension for the AstroFields framework",
     "keywords"    : [ "wordpress", "forms", "fields" ],
     "homepage"    : "https://github.com/AstroFields/PublicForm",
+    "type"        : "library",
     "license"     : "MIT",
     "authors"     : [
         {
@@ -21,7 +22,7 @@
     },
     "autoload"    : {
         "psr-4" : {
-            "WCM\\AstroFields\\" : "src\\"
+            "WCM\\AstroFields\\PublicForm\\" : "src\\"
         }
     }
 }
