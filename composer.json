@@ -17,8 +17,8 @@
     },
     "minimum-stability" : "dev",
     "require"     : {
-        "php"             : ">=5.3",
-        "wcm/astrofields" : "*"
+        "php"                  : ">=5.3",
+        "WCM/AstroFields/Core" : "*"
     },
     "autoload"    : {
         "psr-4" : {
