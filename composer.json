@@ -21,7 +21,7 @@
         "WCM/AstroFields/Core" : "*"
     },
     "autoload"    : {
-        "psr-0" : {
+        "psr-4" : {
             "WCM\\AstroFields\\PublicForm\\" : "src/"
         }
     }
