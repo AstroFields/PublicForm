@@ -5,8 +5,8 @@ namespace WCM\AstroFields\PublicForm\Commands;
 use WCM\AstroFields\Core\Commands\ContextAwareInterface;
 use WCM\AstroFields\Core\Templates\TemplateInterface;
 use WCM\AstroFields\Core\Views\ViewableInterface;
-
 use WCM\AstroFields\Core\Commands\ViewAwareInterface;
+
 use WCM\AstroFields\PublicForm\Views\FormView as View;
 
 class Form implements \SplObserver, ContextAwareInterface
