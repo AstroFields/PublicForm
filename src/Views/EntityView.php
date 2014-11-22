@@ -6,13 +6,14 @@ use WCM\AstroFields\Core\Receivers\FieldInterface;
 use WCM\AstroFields\Core\Views\DataAwareInterface;
 use WCM\AstroFields\Core\Views\ViewableInterface;
 use WCM\AstroFields\Core\Templates\TemplateInterface;
+use WCM\AstroFields\Core\Templates\PrintableInterface;
 
 class EntityView implements ViewableInterface, DataAwareInterface
 {
 	/** @type */
 	public $data;
 
-	/** @type TemplateInterface */
+	/** @type TemplateInterface|PrintableInterface */
 	private $template;
 
 	public function setTemplate( TemplateInterface $template )
