@@ -3,17 +3,17 @@
 namespace WCM\AstroFields\PublicForm\Templates;
 
 use WCM\AstroFields\Core\Receivers\AttributeAwareInterface;
-use WCM\AstroFields\Core\Receivers\LabelInterface;
+use WCM\AstroFields\Core\Receivers\EntityProviderInterface;
 use WCM\AstroFields\Core\Templates\PrintableInterface;
 use WCM\AstroFields\Core\Templates\TemplateInterface;
 
 class LabelTmpl implements TemplateInterface, PrintableInterface
 {
-	/** @type AttributeAwareInterface|LabelInterface */
+	/** @type AttributeAwareInterface|EntityProviderInterface */
 	private $data;
 
 	/**
-	 * @param AttributeAwareInterface|LabelInterface $data
+	 * @param AttributeAwareInterface|EntityProviderInterface $data
 	 * @return $this
 	 */
 	public function attach( $data )
@@ -47,7 +47,7 @@ class LabelTmpl implements TemplateInterface, PrintableInterface
 	{
 		return <<<EOF
 <label for="{$this->data->getKey()}">
-	{$this->data->getLabel()}
+	{$this->data->getValue()}
 </label>
 EOF;
 	}

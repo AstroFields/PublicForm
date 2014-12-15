@@ -2,9 +2,9 @@
 
 namespace WCM\AstroFields\PublicForm\Receivers;
 
-use WCM\AstroFields\Core\Receivers\FieldInterface;
+use WCM\AstroFields\Core\Receivers\EntityProviderInterface;
 
-class Field implements FieldInterface
+class Field implements EntityProviderInterface
 {
 	/** @type Array */
 	private $data;

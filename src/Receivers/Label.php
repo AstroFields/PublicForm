@@ -2,9 +2,9 @@
 
 namespace WCM\AstroFields\PublicForm\Receivers;
 
-use WCM\AstroFields\Core\Receivers\LabelInterface;
+use WCM\AstroFields\Core\Receivers\EntityProviderInterface;
 
-class Label implements LabelInterface
+class Label implements EntityProviderInterface
 {
 	/** @type Array */
 	private $data;
@@ -28,8 +28,8 @@ class Label implements LabelInterface
 	 * Retrieve the value for the tag value
 	 * @return string
 	 */
-	public function getLabel()
+	public function getValue()
 	{
-		return $this->data['label'];
+		return $this->data['value'];
 	}
 }

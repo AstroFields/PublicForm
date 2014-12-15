@@ -4,24 +4,19 @@ namespace WCM\AstroFields\PublicForm\Commands;
 
 use WCM\AstroFields\Core\Commands\ContextAwareInterface;
 use WCM\AstroFields\Core\Commands\ViewAwareInterface;
-use WCM\AstroFields\Core\Receivers\FieldInterface;
-use WCM\AstroFields\Core\Receivers\DataProviderInterface;
-use WCM\AstroFields\Core\Views\ViewableInterface;
+use WCM\AstroFields\Core\Receivers\EntityProviderInterface;
+use WCM\AstroFields\Core\Receivers\DataReceiverInterface;
 use WCM\AstroFields\Core\Templates\TemplateInterface;
-
 use WCM\AstroFields\PublicForm\Views\EntityView as View;
 use WCM\AstroFields\PublicForm\Receivers\Field;
-
 
 class ViewCmd implements \SplObserver, ContextAwareInterface
 {
 	/** @var string */
 	protected $context = '';
 
-	/** @type ViewableInterface */
-	protected $view;
 
-	/** @type FieldInterface|DataProviderInterface */
+	/** @type EntityProviderInterface|DataReceiverInterface */
 	protected $receiver;
 
 	/** @type TemplateInterface */
@@ -40,6 +35,7 @@ class ViewCmd implements \SplObserver, ContextAwareInterface
 	 */
 	public function update( \SplSubject $subject, Array $data = null )
 	{
+		# @TODO Fix usage without dedicated view
 		$this->view->setTemplate( $this->template );
 
 		$this->receiver->setData( $data );

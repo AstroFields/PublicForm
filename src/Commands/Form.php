@@ -3,13 +3,11 @@
 namespace WCM\AstroFields\PublicForm\Commands;
 
 use WCM\AstroFields\Core\Commands\ContextAwareInterface;
+use WCM\AstroFields\Core\Receivers\DataReceiverInterface;
 use WCM\AstroFields\Core\Templates\TemplateInterface;
-use WCM\AstroFields\Core\Views\ViewableInterface;
 use WCM\AstroFields\Core\Commands\ViewAwareInterface;
 
-use WCM\AstroFields\PublicForm\Views\FormView as View;
-
-class Form implements \SplObserver, ContextAwareInterface
+class Form implements \SplObserver, ViewAwareInterface, ContextAwareInterface
 {
 	/** @type string */
 	private $context = '';
@@ -20,19 +18,15 @@ class Form implements \SplObserver, ContextAwareInterface
 	/** @type array $types */
 	private $types;
 
-	/** @type ViewableInterface */
-	private $view;
-
-	/** @type \SplPriorityQueue */
+	/** @type \SplPriorityQueue|mixed */
 	private $receiver;
 
 	/** @type TemplateInterface */
 	private $template;
 
-	public function __construct()
+	public function __construct( TemplateInterface $template )
 	{
-		$this->view = new View;
-
+		$this->template = $template;
 		$this->receiver = new \SplPriorityQueue;
 		$this->receiver->setExtractFlags( \SplPriorityQueue::EXTR_DATA );
 	}
@@ -47,10 +41,8 @@ class Form implements \SplObserver, ContextAwareInterface
 		$this->key   = $data['key'];
 		$this->types = $data['type'];
 
-		$this->view->setData( $this->receiver );
-		$this->view->setTemplate( $this->template );
-
-		$this->view->process();
+		$this->template->attach( $this->receiver );
+		$this->template->display();
 	}
 
 	/**
@@ -82,6 +74,13 @@ class Form implements \SplObserver, ContextAwareInterface
 	{
 		$this->template = $template;
 
-		return $template;
+		return $this;
+	}
+
+	public function setProvider( DataReceiverInterface $receiver )
+	{
+		$this->receiver = $receiver;
+
+		return $this;
 	}
 }
